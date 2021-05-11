@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel=" shortcut icon" href="img/icon.ico" />
+    <link rel="stylesheet" href="src/css/signup.css" />
+    <title>Daily : 일정 관리</title>
+</head>
+
+<body style="background-image: url('img/background.jpg')">
+    <div id="container">
+        <header>
+            <div id="logo">
+                <img src="img/logo.png" />
+            </div>
+            <div id="login_status">
+                <a href="index.html">로그인</a>
+            </div>
+        </header>
+        <div id="main">
+            <div id="signup_text">회원가입</div>
+            <form id="signup_form" method="POST" action="signup.jsp">
+                <input type="text" id="signup_id" name="signup_id" autofocus placeholder=" 아이디" />
+                <input type="password" id="signup_pw" name="signup_pw" placeholder=" 비밀번호" />
+                <input type="password" id="signup_pw_ok" name="signup_pw_ok" placeholder=" 비밀번호 확인" />
+                <input type="button" id="signupBtn" value="계정생성하기" />
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

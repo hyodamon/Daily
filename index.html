@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel=" shortcut icon" href="img/icon.ico" />
+    <link rel="stylesheet" href="src/css/index.css" />
+    <title>Daily : 일정 관리</title>
+</head>
+
+<body style="background-image: url('img/background.jpg')">
+    <div id="container">
+        <div id="main">
+            <div id="logo">
+                <img src="img/logo.png" />
+            </div>
+            <div id="introduce_text">어디에서나 일정을 관리해보세요!</div>
+            <form id="login_form" method="POST" action="login.jsp">
+                <input type="text" id="login_id" name="login_id" autofocus placeholder=" 아이디" />
+                <input type="password" id="login_pw" name="login_pw" placeholder=" 비밀번호" />
+                <input type="button" id="loginBtn" value="로그인" />
+                <div id="login_bottom">
+                    <a href="signup.html">회원가입</a>
+                    <label><input type="checkbox" id="keepLogin" value="true" name="login_keep" />자동 로그인</label>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

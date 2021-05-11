@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel=" shortcut icon" href="img/icon.ico" />
+    <link rel="stylesheet" href="src/css/main.css" />
+    <script src="https://kit.fontawesome.com/c5d2569384.js" crossorigin="anonymous"></script>
+    <title>Daily : 일정 관리</title>
+</head>
+
+<body style="background-image: url('img/background.jpg')">
+    <div id="container">
+        <header>
+            <div id="logo">
+                <img src="img/logo.png" />
+            </div>
+            <div id="login_status">
+                <a href="index.html">로그아웃</a>
+            </div>
+        </header>
+
+        <div id="schedule_list">
+            
+        </div>
+
+        <button id="add_btn" onclick="createAddWindow('', '', '')">+</button>
+
+        <div id="add_window">
+            <div id="add_window_close" class="close_btn"><i class="fas fa-times"></i></div>
+            <div style="display : flex; justify-content: space-between;">
+                <div id="add_date">날짜<br><input id="date" type="date" /></div>
+                <div id="add_time">시간<br><input id="time" type="time" step="1500" /></div>
+            </div>
+            <div id="add_text">내용<br><input id="text" type="text" /></div>
+            <button id="schedule_add_btn">일정 추가</button>
+        </div>
+
+        <div id="notify_window">
+            <div id="notify_window_close" class="close_btn"><i class="fas fa-times"></i></div>
+            <input type="button" id="modify_btn" value="수정하기" />
+            <input type="button" id="delete_btn" value="삭제하기" />
+        </div>
+    </div>
+</body>
+
+<script>
+
+
+    function createAddWindow(date_, time_, content_) {
+        console.log("CreateAddWindow");
+        var date = document.querySelector("#date"); // 날짜
+        var time = document.querySelector("#time"); // 시간
+        var content = document.querySelector("#text"); // 내용
+
+        date.value = date_;
+        time.value = time_;
+        content.value = content_;
+
+        var window = document.querySelector("#add_window");
+        window.style.display = "block"; // 창 보이게 하기
+
+        var x = document.querySelector("#add_window_close"); // x표
+        x.addEventListener("click", function () {
+            window.style.display = "none";
+            //document.getElementById("screen").style.display = "none";
+            date.value = "";
+            time.value = "";
+            content.value = "";
+        });
+
+        document.querySelector("#schedule_add_btn").addEventListener("click", function () {
+            // 일정 추가를 눌렀을 때
+
+            if(date.value=="") {
+                alert("날짜를 입력해주세요!");
+                focus.date;
+            }
+            else if(time.value == "") {
+                alert("시간을 입력해주세요!");
+                focus.time;
+            }
+            else if(content.value == "") {
+                alert("내용을 입력해주세요!");
+                focus.content;
+            }
+            else { // 모두 입력이 됐을 때
+                addSchedule(date, time, text);
+                window.style.display = "none";
+            }
+        });
+    }
+
+    function addSchedule(date, time, text) {
+        console.log("addSchedule");
+        var sameDate = 0;
+
+        var a = document.querySelectorAll(".schedule");
+        var i = 0;
+        while (a.length > i) {
+            if (a[i].id == date.value) {
+                sameDate = a[i].id;
+                break;
+            }
+            i++;
+        }
+
+        var schedule = document.createElement("div");
+        schedule.className = "schedule";
+        schedule.id = String(date.value);
+
+        var schedule_date = document.createElement("div");
+        schedule_date.className = "schedule_date";
+        schedule_date.innerText = date.value + " 의 일정"
+
+        var schedule_content_list = document.createElement("ul");
+        schedule_content_list.className = "schedule_content_list";
+
+        var schedule_content = document.createElement("li");
+        schedule_content.className = "schedule_content";
+        schedule_content.addEventListener("click", function () {
+            createModifyWindow(this)
+        });
+
+        var schedule_time = document.createElement("div");
+        schedule_time.className = "schedule_time";
+        schedule_time.innerText = convertTime(time.value);
+
+        var schedule_text = document.createElement("div");
+        schedule_text.className = "schedule_text";
+        schedule_text.innerText = text.value;
+
+        schedule_content.appendChild(schedule_time);
+        schedule_content.appendChild(document.createElement("hr"));
+        schedule_content.appendChild(schedule_text);
+        schedule_content_list.appendChild(schedule_content);
+        
+        if (sameDate == 0) {
+            schedule.appendChild(schedule_date);
+            schedule.appendChild(schedule_content_list);
+            document.querySelector("#schedule_list").appendChild(schedule);
+        }
+
+        else {
+            var schedule_date_list = document.getElementById(String(sameDate)).childNodes[1];
+            schedule_date_list.appendChild(schedule_content);
+        }
+    }
+
+    function createModifyWindow(el) {
+        var window = document.querySelector("#notify_window");
+        window.style.display = "block";
+
+        document.querySelector("#modify_btn").addEventListener("click", function () {
+            modifySchedule(el);
+            window.style.display = "none";
+        });
+        document.querySelector("#delete_btn").addEventListener("click", function () {
+            deleteSchedule(el);
+            window.style.display = "none";
+        });
+
+        var x = document.querySelector("#notify_window_close");
+        x.addEventListener("click", function () {
+            window.style.display = "none";
+            //document.getElementById("screen").style.display = "none";
+        });
+    }
+
+    function convertTime(time) {
+        var ampm = "";
+        var hour = parseInt(time[0] + time[1]);
+        var minute = time[3] + time[4];
+
+        if (hour > 12) {
+            ampm = "PM";
+            hour = hour - 12;
+        }
+        else {
+            ampm = "AM";
+        }
+        if (hour < 10) {
+            hour = "0" + String(hour);
+        }
+        else {
+            hour = String(hour);
+        }
+        return ampm + " " + hour + ":" + minute;
+    }
+
+    function reverseConvertTime(time) {
+        var ampm = time[0] + time[1];
+        var hour = time[3] + time[4];
+        var minute = time[6] + time[7];
+
+        if (ampm == "PM") {
+            hour = 12 + parseInt(hour);
+        }
+
+        return (hour + ":" + minute);
+    }
+
+    function modifySchedule(el) {
+        var date = el.parentNode.parentNode.id;
+        var time = reverseConvertTime(el.childNodes[0].innerText);
+        var text = el.childNodes[2].innerText;
+        createAddWindow(date, time, text);
+
+        deleteSchedule(el);
+    }
+
+    function deleteSchedule(el) {
+        if(el.parentNode.childNodes.length == 1) {
+            el.parentNode.parentNode.remove();
+        }
+        else {
+            el.remove();
+        }
+    }
+
+
+</script>
+
+</html>

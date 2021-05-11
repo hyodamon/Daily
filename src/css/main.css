@@ -1,0 +1,375 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.5438550420168067) 0%,
+    rgba(0, 0, 0, 1) 80%
+  );
+  background-attachment: fixed;
+  background-position: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 100px;
+}
+
+#logo img {
+  width: 100px;
+  height: auto;
+}
+
+#login_status {
+  background-color: white;
+  width: 90px;
+  height: 35px;
+  border-radius: 50px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 35px;
+  font-weight: 800;
+  color: rgb(25, 25, 25);
+}
+
+#add_btn {
+  position: fixed;
+  left: 90%;
+  top: 85%;
+  background-color: #f79f02;
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+  color: white;
+  font-size: 80px;
+  text-align: center;
+  line-height: 75px;
+  border: none;
+}
+
+.schedule {
+  margin: 10px auto;
+  width: 88%;
+  height: auto;
+}
+.schedule_date {
+  font-size: 30px;
+  color: white;
+}
+.schedule_time {
+  font-size: 25px;
+  font-weight: 700;
+  color: #3b3838;
+}
+hr {
+  border-color: darkgray;
+  background-color: darkgray;
+  border: 0;
+  height: 1px;
+}
+.schedule_content_list {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+.schedule_content {
+  display: inline-block;
+  background-color: white;
+  font-size: 20px;
+  width: 280px;
+  height: 160px;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.schedule_text {
+}
+
+#add_window {
+  background-color: white;
+  width: 400px;
+  height: 260px;
+  border-radius: 5px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  padding: 60px;
+}
+
+.close_btn {
+  position: absolute;
+  font-size: 20px;
+  left: 93%;
+  top: 3%;
+  color: darkgrey;
+  cursor: pointer;
+}
+#add_date {
+  font-size: 20px;
+  font-weight: 700;
+}
+#add_date input[type="date"] {
+  height: 35px;
+  width: 150px;
+}
+#add_time {
+  font-size: 20px;
+  font-weight: 700;
+}
+#add_time input[type="time"] {
+  height: 35px;
+  width: 150px;
+}
+#add_text {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+#add_text input[type="text"] {
+  width: 392px;
+  height: 100px;
+}
+
+#schedule_add_btn {
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  border-radius: 300px;
+  background-color: #f79f02;
+  color: white;
+  border: 0;
+  font-weight: 700;
+  font-size: 16px;
+  position: relative;
+  left: 50%;
+  top: 50px;
+  transform: translate(-50%, -50%);
+}
+
+#notify_window {
+  background-color: white;
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 60px;
+  text-align: center;
+  display: none;
+}
+
+#notify_window input {
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  border-radius: 300px;
+  background-color: #f79f02;
+  color: white;
+  border: 0;
+  font-weight: 700;
+  font-size: 16px;
+  position: relative;
+  margin: 10px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  header {
+    padding: 25px 80px;
+  }
+  #logo img {
+    width: 100px;
+    height: auto;
+  }
+  #signup_text {
+    font-size: 50px;
+  }
+  #add_btn {
+    position: fixed;
+    left: 85%;
+    top: 80%;
+  }
+  .schedule {
+    margin: 5px auto;
+    width: 90%;
+    height: auto;
+  }
+  .schedule_date {
+    font-size: 25px;
+  }
+  .schedule_time {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3b3838;
+  }
+  .schedule_content {
+    font-size: 1px;
+    width: 150px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 2.5px;
+  }
+
+  .schedule_content {
+    font-size: 12px;
+  }
+
+  .schedule_text {
+  }
+}
+
+/* Phone */
+@media screen and (max-width: 767px) {
+  header {
+    padding: 20px 30px;
+  }
+  #login_status {
+    background-color: white;
+    width: 80px;
+    height: 35px;
+    font-size: 15px;
+    line-height: 35px;
+  }
+  #logo img {
+    width: 80px;
+    height: auto;
+  }
+  a {
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 35px;
+  }
+  #add_btn {
+    position: fixed;
+    left: 75%;
+    top: 85%;
+    width: 70px;
+    height: 70px;
+    font-size: 70px;
+    text-align: center;
+    line-height: 70px;
+  }
+  #schedule_list {
+    position: relative;
+    margin: 0 auto;
+  }
+  .schedule {
+    margin: 5px auto;
+    width: 90%;
+    height: auto;
+  }
+  .schedule_date {
+    font-size: 20px;
+    margin-bottom: -10px;
+  }
+  .schedule_time {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3b3838;
+  }
+  .schedule_content {
+    font-size: 1px;
+    width: 90%;
+    height: 60px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  hr {
+    margin: 5px 0;
+  }
+  .schedule_content {
+    display: block;
+  }
+  .schedule_text {
+    font-size: 15px;
+  }
+
+  #add_window {
+    width: 260px;
+    height: 250px;
+    padding: 32px;
+  }
+  .close_btn {
+    position: absolute;
+    font-size: 18px;
+    left: 92%;
+    top: 3%;
+    color: darkgrey;
+  }
+  #add_date {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  #add_date input[type="date"] {
+    height: 30px;
+    width: 120px;
+  }
+  #add_time {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  #add_time input[type="time"] {
+    height: 30px;
+    width: 120px;
+  }
+  #add_text {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+  #add_text input[type="text"] {
+    width: 252px;
+    height: 100px;
+  }
+
+  #schedule_add_btn {
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    border-radius: 300px;
+    background-color: #f79f02;
+    color: white;
+    border: 0;
+    font-weight: 700;
+    font-size: 16px;
+    position: relative;
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%, -50%);
+  }
+  #notify_window {
+    width: 250px;
+    height: 50px;
+    padding: 30px;
+  }
+}
